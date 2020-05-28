@@ -24,9 +24,9 @@ module.exports = {
                 const next = (count - offset) > 0 && (count > limit)  ? page + 1 : null;
                 const prev = page > 1 ? page - 1 : null;
                 const nextPage = process.env.NODE_ENV === 'development' ?
-                (next ? `http://localhost:3000/filters?page=${next}` : null) : (next ? `https:// /filters?page=${next}`: null)
+                (next ? `http://localhost:3000/filters?page=${next}` : null) : (next ? `https://immense-ravine-06184.herokuapp.com/filters?page=${next}`: null)
                 const prevPage =  process.env.NODE_ENV === 'development' ?
-                (prev ? `http://localhost:3000/filters?page=${prev}` : null) : (prev ? `https:// /filters?page=${prev}`: null)
+                (prev ? `http://localhost:3000/filters?page=${prev}` : null) : (prev ? `https://immense-ravine-06184.herokuapp.com/filters?page=${prev}`: null)
                 
                 res.status(200).send({ status: 200, data:[...rows], nextPage, prevPage });
                 return;
