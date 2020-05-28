@@ -4,12 +4,13 @@ const { validationResult } = require('express-validator');
 module.exports = {
     getFilters(req, res)
     {
+        res.setHeader('Content-Type', 'application/json');
         try
         {
+            
             const errors = validationResult(req)
             if(!errors.isEmpty())
             {
-                res.setHeader('Content-Type', 'application/json')
                 res.status(400).send({ status: 400, error: errors.array() })
                 return;
             }
@@ -26,6 +27,7 @@ module.exports = {
                 (next ? `http://localhost:3000/filters?page=${next}` : null) : (next ? `https:// /filters?page=${next}`: null)
                 const prevPage =  process.env.NODE_ENV === 'development' ?
                 (prev ? `http://localhost:3000/filters?page=${prev}` : null) : (prev ? `https:// /filters?page=${prev}`: null)
+                
                 res.status(200).send({ status: 200, data:[...rows], nextPage, prevPage });
                 return;
             }).catch((err)=>{
@@ -35,6 +37,7 @@ module.exports = {
         }
         catch (err)
         {
+    
             res.status(500).send({ status:500, error:"An unknown error occured" })
         }
     }
