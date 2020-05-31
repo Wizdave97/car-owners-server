@@ -6,7 +6,7 @@ const peopleArray = JSON.parse(jsonStr);
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-      return queryInterface.bulkInsert('People',peopleArray.slice(0,2000), {});
+      return queryInterface.bulkInsert('People',peopleArray.slice(0,10000), {});
   },
 
   down: (queryInterface, Sequelize) => {

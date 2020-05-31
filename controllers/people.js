@@ -19,12 +19,12 @@ module.exports = {
             const formattedFilters = formatFilters(req.body)
             models.People.findAndCountAll({
                 where: {
-                  ...formattedFilters  
+                 ...formattedFilters  
                 },
                 limit,
                 offset,
             }).then(({rows, count}) => {
-                const next = (count - offset) > 1 && (count > limit)  ? page + 1 : null;
+                const next = (count - (offset + limit)) > 1 && (count > limit)  ? page + 1 : null;
                 const prev = page > 1 ? page - 1 : null;
                 const nextPage = process.env.NODE_ENV === 'development' ?
                 (next ? `http://localhost:3000/people?page=${next}` : null) : (next ? `https://immense-ravine-06184.herokuapp.com/people?page=${next}`: null)
