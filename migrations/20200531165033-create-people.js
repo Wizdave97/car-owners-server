@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       car_model_year: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       car_color: {
         type: Sequelize.STRING
